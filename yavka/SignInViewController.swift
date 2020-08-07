@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class SignInViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var passwordField: UITextField!
@@ -36,23 +36,6 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
-    @IBAction func signInButtonTapped(_ sender: Any) {
-        guard loginField.text != "", loginField.text != nil else {
-            print("Имя пользователя не может быть пустым.")
-            return
-        }
-        guard passwordField.text != "", passwordField.text != nil else {
-            print("Пароль не может быть пустым.")
-            return
-        }
-        
-        if loginField.text == "admin", passwordField.text == "12345" {
-            print("Вы успешно авторизовались!")
-        } else {
-            print("Неверное имя пользователя и/или пароль.")
-        }
-    }
-    
     @objc func keyboardWillBeShown(notification: Notification) {
         let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 20.0, right: 0)
         
@@ -70,9 +53,32 @@ class LoginViewController: UIViewController {
     }
     
     private func showSignInError() {
-        let alert = UIAlertController(title: "Error", message: "Login and/or password is incorrect", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Ошибка", message: "Неверное имя пользователя и/или пароль.", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+    }
+    
+    private func checkLoginAndPassword() -> Bool{
+        guard let loginText = loginField.text else { return false }
+        guard let pwdText = passwordField.text else { return false }
+        
+        if loginText == "admin", pwdText == "12345" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "signInSegue" {
+            if checkLoginAndPassword() {
+                return true
+            } else {
+                showSignInError()
+                return false
+            }
+        }
+        return true
     }
 }
