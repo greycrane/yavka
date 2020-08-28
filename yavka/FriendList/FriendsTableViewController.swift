@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "FriendTableViewCellId"
 
-class FriendsTableViewController: UITableViewController {
+@IBDesignable class FriendsTableViewController: UITableViewController {
     
     var friendsAdded: [Friend] = []
     
