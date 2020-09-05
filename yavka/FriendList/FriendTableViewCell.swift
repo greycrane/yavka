@@ -14,23 +14,23 @@ import UIKit
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
-    @IBInspectable var shadowRadius: CGFloat = 10.0 {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    @IBInspectable var shadowColor: CGColor = UIColor.black.cgColor {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    @IBInspectable var shadowOpacity: CGFloat = 0.5 {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
+//    @IBInspectable var shadowRadius: CGFloat = 10.0 {
+//        didSet {
+//            setNeedsDisplay()
+//        }
+//    }
+//
+//    @IBInspectable var shadowColor: CGColor = UIColor.black.cgColor {
+//        didSet {
+//            setNeedsDisplay()
+//        }
+//    }
+//
+//    @IBInspectable var shadowOpacity: CGFloat = 0.5 {
+//        didSet {
+//            setNeedsDisplay()
+//        }
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,7 +38,7 @@ import UIKit
         avatarImageView.clipsToBounds = true
         shadowView.layer.cornerRadius = shadowView.frame.size.width / 2
         shadowView.layer.shadowRadius = 10
-        //shadowView.layer.shadowOpacity = 0.5
+        shadowView.layer.shadowOpacity = 0.5
         shadowView.layer.shadowColor = UIColor.black.cgColor
         shadowView.layer.shadowOffset = CGSize.zero
     }

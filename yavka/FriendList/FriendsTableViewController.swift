@@ -13,11 +13,26 @@ private let reuseIdentifier = "FriendTableViewCellId"
 @IBDesignable class FriendsTableViewController: UITableViewController {
     
     var friendsAdded: [Friend] = []
+    var friendsDictionary = [String: [String]]()
+    var friendsSectionTitles = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         generateFriends()
+        
+        for friend in friendsAdded {
+            let friendKey = String(friend.friendName.prefix(1))
+            if var friendsValues = friendsDictionary[friendKey] {
+                friendsValues.append(friend.friendName)
+                friendsDictionary[friendKey] = friendsValues
+            } else {
+                friendsDictionary[friendKey] = [friend.friendName]
+            }
+        }
+        
+        friendsSectionTitles = [String](friendsDictionary.keys)
+        friendsSectionTitles = friendsSectionTitles.sorted(by: { $0 < $1 })
     }
     
     private func generateFriends() {
@@ -48,14 +63,28 @@ private let reuseIdentifier = "FriendTableViewCellId"
         friendsAdded.append(friend5)
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return friendsSectionTitles.count
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friendsAdded.count
+        let friendKey = friendsSectionTitles[section]
+        if let friendsValues = friendsDictionary[friendKey] {
+            return friendsValues.count
+        }
+        
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! FriendTableViewCell
         let friend = friendsAdded[indexPath.row]
+        let sectionLetter = friendsSectionTitles[indexPath.section]
         cell.configure(for: friend)
+        
+        if let friendName = friendsDictionary[sectionLetter] {
+            cell.nameLabel.text = friendName[indexPath.row]
+        }
         
         return cell
     }
@@ -66,5 +95,13 @@ private let reuseIdentifier = "FriendTableViewCellId"
         vc.selectedModel = selectedFriend
         vc.friendPhotosNames = selectedFriend.friendPhotosName
         self.show(vc, sender: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return friendsSectionTitles[section]
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return friendsSectionTitles
     }
 }
