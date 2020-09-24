@@ -75,6 +75,9 @@ class SignInViewController: UIViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "signInSegue" {
             if checkLoginAndPassword() {
+                let session = Session.shared
+                session.token = (loginField.text)! + "_token"
+                session.userId = 1
                 return true
             } else {
                 showSignInError()

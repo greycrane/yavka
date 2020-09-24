@@ -16,6 +16,7 @@
 		560456EE24D193DF00AAAAC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560456EC24D193DF00AAAAC9 /* Main.storyboard */; };
 		560456F024D193E600AAAAC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 560456EF24D193E600AAAAC9 /* Assets.xcassets */; };
 		560456F324D193E600AAAAC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 560456F124D193E600AAAAC9 /* LaunchScreen.storyboard */; };
+		569DA9FC251D3CD100127336 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DA9FB251D3CD100127336 /* Session.swift */; };
 		56A1CA6924EC881200A3EFBB /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A1CA6824EC881200A3EFBB /* ShadowView.swift */; };
 		56A1CA6B24EC8B5E00A3EFBB /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A1CA6A24EC8B5E00A3EFBB /* AvatarImageView.swift */; };
 		56A1CA6D24EC94B900A3EFBB /* LikeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A1CA6C24EC94B900A3EFBB /* LikeControl.swift */; };
@@ -42,6 +43,7 @@
 		560456EF24D193E600AAAAC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		560456F224D193E600AAAAC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		560456F424D193E600AAAAC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		569DA9FB251D3CD100127336 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		56A1CA6824EC881200A3EFBB /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		56A1CA6A24EC8B5E00A3EFBB /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		56A1CA6C24EC94B900A3EFBB /* LikeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeControl.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				56F6076224E2B55000FA3BFC /* Friend.swift */,
 				56F6076424E2B55E00FA3BFC /* Community.swift */,
 				560424E925041D55007F0B3D /* News.swift */,
+				569DA9FB251D3CD100127336 /* Session.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				56F6076B24E2B9C400FA3BFC /* CommunityTableViewCell.swift in Sources */,
 				56F6076324E2B55000FA3BFC /* Friend.swift in Sources */,
 				560456EB24D193DF00AAAAC9 /* SignInViewController.swift in Sources */,
+				569DA9FC251D3CD100127336 /* Session.swift in Sources */,
 				56A1CA6924EC881200A3EFBB /* ShadowView.swift in Sources */,
 				560424EA25041D55007F0B3D /* News.swift in Sources */,
 				560424E625041D12007F0B3D /* NewsTableViewController.swift in Sources */,
