@@ -16,6 +16,8 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginField.text = "admin"
+        passwordField.text = "admin"
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +65,7 @@ class SignInViewController: UIViewController {
         guard let loginText = loginField.text else { return false }
         guard let pwdText = passwordField.text else { return false }
         
-        if loginText == "admin", pwdText == "12345" {
+        if loginText == "admin", pwdText == "admin" {
             return true
         } else {
             return false
@@ -73,6 +75,9 @@ class SignInViewController: UIViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "signInSegue" {
             if checkLoginAndPassword() {
+                let session = Session.shared
+                session.token = (loginField.text)! + "_token"
+                session.userId = 1
                 return true
             } else {
                 showSignInError()
